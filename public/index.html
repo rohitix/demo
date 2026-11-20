@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>TABLE — Kitchen & Delivery</title>
+    <link rel="stylesheet" href="/theme.css">
+    <script src="/app.js" defer></script>
+</head>
+
+<body>
+    <div class="announcement">COMPLIMENTARY DELIVERY ON ORDERS OVER ₹799 ✳ PREPARED FRESH TO ORDER • DISPATCHED IN 30–40
+        MINS</div>
+    <header class="header"><a class="brand" href="#">TABLE®</a>
+        <nav class="nav"><a href="#menu">TODAY'S MENU</a><a href="#journal">CHEF'S EDIT</a><a href="#standards">OUR
+                KITCHEN</a><a href="#zones">DELIVERY ZONES</a></nav>
+        <div class="header-right"><button class="header-action location-pill" onclick="openZones()">LOCATION / <span
+                    id="headerEta">35 MINS</span></button><button class="header-action" onclick="toggleSearch()">SEARCH
+                ⌕</button><button class="header-action" onclick="openBag()">BAG (<span id="bagCount">0</span>)</button>
+        </div>
+    </header>
+    <div class="search-panel" id="searchPanel"><input id="searchInput" placeholder="Find a dish or ingredient…"
+            oninput="renderMenu()"></div>
+    <main>
+        <section class="hero"><video class="hero-video" autoplay muted loop playsinline webkit-playsinline
+                preload="auto"
+                poster="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=2200&q=90">
+                <source src="https://videos.pexels.com/video-files/8870627/8870627-hd_1920_1080_25fps.mp4"
+                    type="video/mp4">
+            </video>
+            <div class="hero-bg"></div>
+            <div class="hero-inner">
+                <div class="hero-meta eyebrow"><span>TABLE KITCHEN / SURAT</span><span>FRESHLY MADE · DELIVERED
+                        HOT</span></div>
+                <div class="hero-copy">
+                    <div class="hero-status"><i></i> KITCHEN OPEN NOW <span>•</span> DISPATCHING IN 30–40 MINS</div>
+                    <h1 class="serif">Crafted for the Table.<br><em>Delivered Hot.</em></h1>
+                    <p>Seasonal plates, honest ingredients and kitchen-to-door freshness. Your next favourite meal is
+                        closer than you think.</p>
+                    <div class="hero-actions"><a class="btn" href="#menu">ORDER NOW ↘</a><button class="hero-secondary"
+                            onclick="openFilm()">WATCH KITCHEN STORY ▶</button></div>
+                    <div class="hero-address"><input id="heroZoneInput"
+                            placeholder="Enter your Surat area or pincode…"><button onclick="checkZone()">CHECK DELIVERY
+                            ↗</button></div>
+                    <div id="zoneFeedback" class="eyebrow"></div>
+                </div>
+                <div class="hero-meta eyebrow"><span>INGREDIENT-LED · COOKED TO ORDER</span><span>SCROLL TO DISCOVER
+                        ↓</span></div>
+            </div>
+        </section>
+        <section class="section" id="menu">
+            <div class="wrap">
+                <div class="section-head">
+                    <div>
+                        <div class="eyebrow muted">TODAY'S KITCHEN / 08 PLATES</div>
+                        <h2 class="serif">A considered<br>kind of craving.</h2>
+                    </div>
+                    <p class="section-note">A small menu, made with intention.</p>
+                </div>
+                <div class="filters"><button class="filter active" data-cat="ALL" onclick="setCategory('ALL')">ALL
+                        (08)</button><button class="filter" data-cat="SMALL PLATES"
+                        onclick="setCategory('SMALL PLATES')">SMALL PLATES</button><button class="filter"
+                        data-cat="MAINS" onclick="setCategory('MAINS')">MAINS</button><button class="filter"
+                        data-cat="WOOD-FIRED" onclick="setCategory('WOOD-FIRED')">WOOD-FIRED</button><button
+                        class="filter" data-cat="DESSERTS & DRINKS" onclick="setCategory('DESSERTS & DRINKS')">DESSERTS
+                        & DRINKS</button><button class="filter" id="vegFilter" onclick="toggleDiet('veg')">VEG
+                        ONLY</button><button class="filter" id="gfFilter"
+                        onclick="toggleDiet('gf')">GLUTEN-FREE</button></div>
+                <div class="menu-grid" id="menuGrid"></div>
+            </div>
+        </section>
+        <section class="journal" id="journal">
+            <div class="journal-grid">
+                <div class="journal-image"><img
+                        src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1200&q=85"
+                        alt="Chef in kitchen"><button class="play-film" onclick="openFilm()">WATCH FILM ↗</button></div>
+                <div class="journal-copy">
+                    <div class="eyebrow muted">THE KITCHEN JOURNAL / 001</div>
+                    <h2 class="serif">Craft in<br><em>motion.</em></h2>
+                    <p>Seasonal produce, trusted growers, zero-seed-oil cooking and considered thermal packaging. Good
+                        food, made with intention.</p><button class="text-link" onclick="openFilm()">WATCH THE KITCHEN
+                        FILM ↗</button>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="standards">
+            <div class="wrap">
+                <div class="stats">
+                    <div class="stat"><strong>35 MIN</strong><span>Average doorstep dispatch</span></div>
+                    <div class="stat"><strong>100%</strong><span>Cooked-to-order freshness</span></div>
+                    <div class="stat"><strong>04</strong><span>Daily micro-menus</span></div>
+                    <div class="stat"><strong>0%</strong><span>Single-use plastic</span></div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="wrap">
+                <div class="section-head">
+                    <div>
+                        <div class="eyebrow muted">ORDER BY INTENTION — 03</div>
+                        <h2 class="serif">What's the occasion?</h2>
+                    </div>
+                </div>
+                <div class="intent-grid">
+                    <article class="intent-card" onclick="chooseIntent('solo')"><img
+                            src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85"
+                            alt="Solo meal">
+                        <div class="intent-copy">
+                            <div class="eyebrow">01 / SOLO DINING</div>
+                            <h3>Just for you.</h3>
+                            <p>Balanced plates for one ↗</p>
+                        </div>
+                    </article>
+                    <article class="intent-card" onclick="chooseIntent('shared')"><img
+                            src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=85"
+                            alt="Shared meal">
+                        <div class="intent-copy">
+                            <div class="eyebrow">02 / SHARED TABLE</div>
+                            <h3>Pass it around.</h3>
+                            <p>Generous mains for two or more ↗</p>
+                        </div>
+                    </article>
+                    <article class="intent-card" onclick="chooseIntent('light')"><img
+                            src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=85"
+                            alt="Fresh salad">
+                        <div class="intent-copy">
+                            <div class="eyebrow">03 / LIGHT & BOTANICAL</div>
+                            <h3>Keep it fresh.</h3>
+                            <p>Vegetarian & gluten-free ↗</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section class="section faq" id="zones">
+            <div class="wrap faq-layout">
+                <div>
+                    <div class="eyebrow muted">GOOD TO KNOW</div>
+                    <h2 class="serif">The finer details.</h2>
+                </div>
+                <div>
+                    <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">How does thermal
+                            packaging keep food crisp? <span>+</span></button>
+                        <div class="faq-answer hide">Insulated, vent-conscious containers help preserve warmth and
+                            texture. Sauces and crisp elements are separated where the dish calls for it.</div>
+                    </div>
+                    <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Which neighborhoods do
+                            you deliver to? <span>+</span></button>
+                        <div class="faq-answer hide">Central District, Westside & Riverside, and North Hills. Use the
+                            delivery checker to select your zone.</div>
+                    </div>
+                    <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Can I schedule dinner
+                            delivery? <span>+</span></button>
+                        <div class="faq-answer hide">Yes. Choose an evening slot at checkout, subject to kitchen
+                            capacity.</div>
+                    </div>
+                    <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">How are severe food
+                            allergies handled? <span>+</span></button>
+                        <div class="faq-answer hide">Contact the kitchen before ordering. We cannot guarantee an
+                            allergen-free environment or rule out cross-contact.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="wrap">
+            <div class="footer-top">
+                <div>
+                    <div class="eyebrow">A NOTE FROM OUR KITCHEN</div>
+                    <h2>Stay at<br>the table.</h2>
+                    <p>Seasonal notes, new plates and the occasional invitation.</p>
+                    <form class="newsletter" onsubmit="joinNewsletter(event)"><input id="newsletterEmail" type="email"
+                            placeholder="Your email address" required><button>JOIN THE LIST ↗</button></form>
+                    <div id="newsletterMessage"></div>
+                </div>
+                <div>
+                    <div class="eyebrow">COME BY / SAY HELLO</div>
+                    <p>OPEN DAILY<br>11:30 AM – 1:00 AM<br>Surat, Gujarat, India</p>
+                </div>
+                <div class="footer-links"><button
+                        onclick="openInfo('Instagram','Follow our kitchen journal on Instagram.')">INSTAGRAM
+                        ↗</button><button
+                        onclick="openInfo('Contact kitchen','Email hello@table.kitchen. Confirm contact details before publishing.')">CONTACT
+                        KITCHEN ↗</button><button
+                        onclick="openInfo('Delivery & refunds','Contact the kitchen promptly with your order ID for delivery issues.')">DELIVERY
+                        & REFUNDS</button><button
+                        onclick="openInfo('Privacy policy','We use submitted details to process orders and newsletter subscriptions.')">PRIVACY
+                        POLICY</button><button onclick="window.scrollTo({top:0,behavior:'smooth'})">BACK TO TOP
+                        ↑</button></div>
+            </div>
+            <div class="footer-bottom">© TABLE® 2026 · MADE WITH INTENTION · SURAT, INDIA</div>
+        </div>
+    </footer>
+    <div class="mobile-cart" id="mobileCart"><button onclick="openBag()"><span>VIEW BAG · <span
+                    id="mobileCount">0</span> ITEMS</span><span id="mobileTotal">₹0 ↗</span></button></div>
+    <div class="modal-backdrop" id="modalBackdrop" onclick="backdropClose(event)">
+        <div class="modal"><button class="modal-close" onclick="closeModal()">×</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+    <aside class="drawer" id="bagDrawer">
+        <div class="drawer-head">
+            <h2 id="drawerTitle">Your bag.</h2><button class="drawer-close" onclick="closeBag()">×</button>
+        </div>
+        <div class="drawer-body" id="drawerBody"></div>
+        <div class="drawer-foot" id="drawerFoot"></div>
+    </aside>
+    <div class="toast" id="toast"></div>
+</body>
+
+</html>
